@@ -1,6 +1,6 @@
 # 🚦 Trafik İşareti Sınıflandırma (Traffic Sign Classification) Projesi
 
-Bu proje, görüntü işleme ve Derin Öğrenme (Deep Learning) teknikleri kullanılarak **Almanya Trafik İşaretleri Veri Setindeki farklı trafik işaretini doğru bir şekilde sınıflandırmayı amaçlar.
+Bu proje, görüntü işleme ve Derin Öğrenme (Deep Learning) teknikleri kullanılarak Almanya Trafik İşaretleri Veri Setindeki farklı trafik işaretini doğru bir şekilde sınıflandırmayı amaçlar.
 
 ---
 
@@ -12,7 +12,7 @@ Projenin temel amacı, bir Evrişimli Sinir Ağı (CNN) mimarisi geliştirerek, 
 
 1.  Sınıf dengesizliğini (Imbalanced Classes) gidermek.
 2.  Küçük boyutlu 32x32 görüntülerden karmaşık özellikler çıkarmak.
-3.  Modelin ezberleme (Overfitting)yerine genelleme (Generalization) yapmasını sağlamak.
+3.  Modelin ezberleme (Overfitting) yerine genelleme (Generalization) yapmasını sağlamak.
 
 ---
 
@@ -33,7 +33,7 @@ Bu çalışmada Trafik İşaretleri Veri Seti kullanılmıştır.
 
 ### 1. Model Mimarisi (TrafficSignCNN)
 
-Önceki VGG mimarilerine dayanan ancak problem ölçeğine indirgenmiş, ** 4 bloklu derin öğrenme yapısı ** kullanılmıştır. Model, küçük boyutlu giriş görüntüsünden 32x32 güçlü özellikler çıkarmak için tasarlanmıştır.
+Önceki VGG mimarilerine dayanan ancak problem ölçeğine indirgenmiş, **4 bloklu derin öğrenme yapısı** kullanılmıştır. Model, küçük boyutlu giriş görüntüsünden 32x32 güçlü özellikler çıkarmak için tasarlanmıştır.
 
 - **Evrişim (Conv) Katmanları:**  32 -> 64 -> 128 filtre sayıları kullanılarak hiyerarşik özellik çıkarımı sağlanmıştır.
 - **Normalizasyon:** Batch Normalization (BatchNorm2d) her evrişim bloğunda kullanılarak eğitimin kararlılığı ve hızı artırılmıştır.
