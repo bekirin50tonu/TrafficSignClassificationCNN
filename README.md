@@ -1,31 +1,31 @@
 # 🚦 Trafik İşareti Sınıflandırma (Traffic Sign Classification) Projesi
 
-Bu proje, görüntü işleme ve Derin Öğrenme $(\mathbf{Deep } \mathbf{Learning})$ teknikleri kullanılarak **Almanya Trafik İşaretleri Veri Setindeki $(\text{GTSRB})$** $43$ farklı trafik işaretini doğru bir şekilde sınıflandırmayı amaçlar.
+Bu proje, görüntü işleme ve Derin Öğrenme (Deep Learning) teknikleri kullanılarak **Almanya Trafik İşaretleri Veri Setindeki farklı trafik işaretini doğru bir şekilde sınıflandırmayı amaçlar.
 
 ---
 
 ## 🎯 Projenin Amacı
 
-Projenin temel amacı, bir Evrişimli Sinir Ağı $(\mathbf{Convolutional } \mathbf{Neural } \mathbf{Network} - \mathbf{CNN})$ mimarisi geliştirerek, $\mathbf{32 \times 32}$ piksel çözünürlüğündeki trafik işareti görüntülerini yüksek doğrulukla $(\mathbf{\text{Accuracy}})$ ve güvenilirlikle $(\mathbf{F1 } \mathbf{Score})$ tanımaktır.
+Projenin temel amacı, bir Evrişimli Sinir Ağı (CNN) mimarisi geliştirerek, 32x32 piksel çözünürlüğündeki trafik işareti görüntülerini yüksek doğrulukla ve güvenilirlikle tanımaktır.
 
 Özel hedefler:
 
-1.  Sınıf dengesizliğini $(\mathbf{Imbalanced } \mathbf{Classes})$ gidermek.
-2.  Küçük boyutlu $(\mathbf{32 \times 32})$ görüntülerden karmaşık özellikler çıkarmak.
-3.  Modelin ezberleme $(\mathbf{Overfitting})$ yerine genelleme $(\mathbf{Generalization})$ yapmasını sağlamak.
+1.  Sınıf dengesizliğini (Imbalanced Classes) gidermek.
+2.  Küçük boyutlu 32x32 görüntülerden karmaşık özellikler çıkarmak.
+3.  Modelin ezberleme (Overfitting)yerine genelleme (Generalization) yapmasını sağlamak.
 
 ---
 
 ## 📊 Veri Seti Hakkında Bilgi
 
-Bu çalışmada $\mathbf{\text{Almanya } \text{Trafik } \text{İşaretleri } \text{Veri } \text{Seti } (\text{GTSRB})}$ kullanılmıştır.
+Bu çalışmada Trafik İşaretleri Veri Seti kullanılmıştır.
 
 | Detay                   | Değer                                                                                                                                                                                                                          |
 | :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Toplam Sınıf Sayısı** | $\mathbf{43}$ farklı trafik işareti.                                                                                                                                                                                           |
-| **Görüntü Çözünürlüğü** | $\mathbf{32 \times 32}$ piksel.                                                                                                                                                                                                |
-| **Toplam Örnek Sayısı** | $\mathbf{\approx 30.000}$ görüntü.                                                                                                                                                                                             |
-| **Veri Dengesizliği**   | Yüksek düzeyde dengesiz sınıflar mevcuttur. $(\text{Örn: } \text{Bazı } \text{sınıflar } \mathbf{\approx 180 } \text{adet } \text{örnek, } \text{bazıları } \mathbf{\approx 2000 } \text{adet } \text{örnek } \text{içerir.})$ |
+| **Toplam Sınıf Sayısı** | 43 farklı trafik işareti.                                                                                                                                                                                           |
+| **Görüntü Çözünürlüğü** | 32x32 piksel.                                                                                                                                                                                                |
+| **Toplam Örnek Sayısı** | 30.000'den fazla görüntü.                                                                                                                                                                                             |
+| **Veri Dengesizliği**   | Yüksek düzeyde dengesiz sınıflar mevcuttur. Bazı sınıflar 180 örnek içerirken bazıları 2000 adet veri içerir. |
 
 ---
 
@@ -33,39 +33,39 @@ Bu çalışmada $\mathbf{\text{Almanya } \text{Trafik } \text{İşaretleri } \te
 
 ### 1. Model Mimarisi (TrafficSignCNN)
 
-Önceki VGG mimarilerine dayanan ancak problem ölçeğine indirgenmiş, $\mathbf{4 \text{ } \text{bloklu } \text{derin } \text{bir } \text{CNN } \text{yapısı }}$ kullanılmıştır. Model, küçük boyutlu giriş görüntüsünden $(\mathbf{32 \times 32 \times 3})$ güçlü özellikler çıkarmak için tasarlanmıştır.
+Önceki VGG mimarilerine dayanan ancak problem ölçeğine indirgenmiş, ** 4 bloklu derin öğrenme yapısı ** kullanılmıştır. Model, küçük boyutlu giriş görüntüsünden 32x32 güçlü özellikler çıkarmak için tasarlanmıştır.
 
-- **Evrişim (Conv) Katmanları:** $\mathbf{32} \rightarrow \mathbf{64} \rightarrow \mathbf{128} $ filtre sayıları kullanılarak hiyerarşik özellik çıkarımı sağlanmıştır.
-- **Normalizasyon:** $\mathbf{\text{Batch } \text{Normalization } (\text{BatchNorm2d})}$ her evrişim bloğunda kullanılarak eğitimin kararlılığı ve hızı artırılmıştır.
-- **Sınıflandırıcı:** $\mathbf{2048}$ girişli, $\mathbf{3}$ katmanlı tam bağlantılı $(\mathbf{FC})$ yapı kullanılarak aşırı parametre yükünden kaçınılmıştır.
+- **Evrişim (Conv) Katmanları:**  32 -> 64 -> 128 filtre sayıları kullanılarak hiyerarşik özellik çıkarımı sağlanmıştır.
+- **Normalizasyon:** Batch Normalization (BatchNorm2d) her evrişim bloğunda kullanılarak eğitimin kararlılığı ve hızı artırılmıştır.
+- **Sınıflandırıcı:** 2048 girişli, 3 katmanlı tam bağlantılı FC yapı kullanılarak aşırı parametre yükünden kaçınılmıştır.
 
 ### 2. Veri Ön İşleme ve Artırım
 
-Modelin genelleme yeteneğini artırmak için **kapsamlı veri artırımı** $(\mathbf{Data } \mathbf{Augmentation})$ uygulanmıştır:
+Modelin genelleme yeteneğini artırmak için **kapsamlı veri artırımı** (Data Augmentation) uygulanmıştır:
 
-- **Normalizasyon:** Veri setinin kendi istatistikleri $(\mathbf{\text{Mean } \text{ve } \text{Std}})$ kullanılarak piksel değerleri normalize edilmiştir.
-- **Artırım Teknikleri:** $\mathbf{\text{RandomRotation } (\mathbf{15 } \text{derece})}, \mathbf{\text{RandomHorizontalFlip}}$ ve $\mathbf{\text{ColorJitter}}$ kullanılmıştır.
+- **Normalizasyon:** Veri setinin kendi istatistikleri (Mean ve Std) kullanılarak piksel değerleri normalize edilmiştir.
+- **Artırım Teknikleri:** 15° RandomRotation, RandomHorizontalFlip ve ColorJitter kullanılmıştır.
 
 ### 3. Optimizasyon ve Düzenleme (Regularization)
 
-- **Kayıp Fonksiyonu:** $\mathbf{\text{nn.CrossEntropyLoss}}$ kullanılmıştır.
-- **Sınıf Ağırlıklandırması (Class Weighting):** Sınıf dengesizliğini gidermek için $\mathbf{\text{Loss } \text{fonksiyonuna } \text{ters } \text{frekans } \text{ağırlıkları }}$ eklenmiştir.
-- **Düzenleme:** $\mathbf{\text{Dropout } (\mathbf{p}=0.4)}$ ve $\mathbf{\text{L2 } \text{Düzenlemesi } (\mathbf{Weight } \mathbf{Decay})}$ ile modelin ezberlemesi engellenmiştir.
-- **Eğitimi Kontrol:** $\mathbf{\text{Early } \text{Stopping}}$ mekanizması, $\mathbf{\text{Validation } \text{Loss}}$ düşmediğinde eğitimi sonlandırarak en iyi genelleme noktası yakalanmıştır.
+- **Kayıp Fonksiyonu:** nn.CrossEntropyLoss kullanılmıştır.
+- **Sınıf Ağırlıklandırması (Class Weighting):** Sınıf dengesizliğini gidermek için Loss fonksiyonuna ters frekans ağırlıkları eklenmiştir.
+- **Düzenleme:** Dropout=0.4 ve L2 Düzenlemesi (Weight Decay) ile modelin ezberlemesi engellenmiştir.
+- **Eğitimi Kontrol:** Early Stopping mekanizması, Validation Loss düşmediğinde eğitimi sonlandırarak en iyi genelleme noktası yakalanmıştır.
 
 ---
 
 ## 💡 Elde Edilen Sonuçlar
 
-Kullanılan dengeli mimari, veri artırımı ve sınıf ağırlıklandırması stratejileri sayesinde, model $\mathbf{\text{GTSRB } \text{veri } \text{setinde } \text{beklenen } \text{performansı } \text{göstermiştir.}}$
+Kullanılan dengeli mimari, veri artırımı ve sınıf ağırlıklandırması stratejileri sayesinde, model Trafik İşaretleri veri setinde beklenen performansı göstermiştir.
 
 | Metrik                                   | Değer                              |
 | :--------------------------------------- | :--------------------------------- |
-| **Nihai Doğruluk (Validation Accuracy)** | $\mathbf{83.32\%}$                 |
-| **Eğitim Süresi**                        | $\approx \mathbf{32*2}$ epoch      |
+| **Nihai Doğruluk (Validation Accuracy)** | ~83.32                 |
+| **Eğitim Süresi**                        | epoch=32 * 2 training      |
 | **Model Kapasitesi**                     | Genelleme başarısı orta-yüksektir. |
 
-**Özet:** Model, dengesizlik sorununa rağmen azınlık sınıfları da ortalamanın üstünde bir şekilde öğrenmiş ve $\mathbf{80\%}$'ın üzerinde bir $\mathbf{\text{Validation } \text{Accuracy}}$ hedefine ulaşmıştır.
+**Özet:** Model, dengesizlik sorununa rağmen azınlık sınıfları da ortalamanın üstünde bir şekilde öğrenmiş ve 80%'nin üzerinde bir Validation Accuracy hedefine ulaşmıştır.
 
 ---
 
